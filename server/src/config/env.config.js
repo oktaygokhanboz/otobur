@@ -10,6 +10,7 @@ function required(envName) {
 }
 
 export default {
+  nodeEnv: required("NODE_ENV"),
   port: parseInt(required("PORT"), 10) || 3000,
   db: {
     host: required("PG_HOST"),
