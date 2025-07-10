@@ -19,6 +19,8 @@ const conditionModel = {
     FROM plant_condition
     JOIN plant ON plant_condition.plant_id = plant.id
     LEFT JOIN otobur_user ON plant_condition.user_id = otobur_user.id
+
+    ORDER BY accession_number ASC
     `);
 
     return res.rows;
