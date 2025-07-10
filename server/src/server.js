@@ -5,12 +5,14 @@ import errorHandler from "../middleware/errorHandler.js";
 import accessionRoutes from "./routes/accession.routes.js";
 import collectorRoutes from "./routes/collector.routes.js";
 import seedBankRoutes from "./routes/seed-bank.routes.js";
+import conditionRoutes from "./routes/condition.routes.js";
 
 const app = express();
 
 app.use("/api/accession", accessionRoutes);
 app.use("/api/collector", collectorRoutes);
 app.use("/api/seed-bank", seedBankRoutes);
+app.use("/api/condition", conditionRoutes);
 
 app.use(errorHandler);
 
