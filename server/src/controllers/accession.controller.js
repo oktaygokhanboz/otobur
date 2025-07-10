@@ -1,9 +1,9 @@
 import accessionModel from "../models/accession.model.js";
 
 const accessionController = {
-  getAllPlants: async (req, res) => {
+  getAccessionTable: async (req, res) => {
     try {
-      res.json(await accessionModel.getAllPlants());
+      res.json(await accessionModel.getAll());
     } catch (err) {
       console.log("Error fetching all plants:", err);
     }
