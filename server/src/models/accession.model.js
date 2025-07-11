@@ -5,6 +5,7 @@ const accessionModel = {
     const res = await db.query(`
       SELECT
 
+      plant.id,
       accession_number,
       plant.name AS plant_name,
       material,

@@ -5,6 +5,7 @@ const seedBankModel = {
     const res = await db.query(`
       SELECT
 
+      plant.id,
       accession_number,
       name AS plant_name,
       quantity,

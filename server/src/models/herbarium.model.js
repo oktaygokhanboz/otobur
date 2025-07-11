@@ -5,11 +5,12 @@ const herbariumModel = {
     const res = await db.query(`
       SELECT
       
+      plant.id,
       herbarium_no,
       plant.name AS plant_name,
       collector.name AS collector_name,
       collector.code AS collector_code,
-      collection_number
+      collection_number,
       location,
       latitude,
       longitude,
