@@ -70,19 +70,19 @@ const AccessionPage = () => {
     {
       field: "collector_name",
       headerName: "Toplayıcı Adı",
-      width: 150,
+      width: 180,
       renderCell: (params: any) => params.value || "—",
     },
     {
       field: "collector_code",
       headerName: "Toplayıcı Kodu",
-      width: 100,
+      width: 120,
       renderCell: (params: any) => params.value || "—",
     },
     {
       field: "collection_number",
       headerName: "Toplanma Numarası",
-      width: 100,
+      width: 150,
       renderCell: (params: any) => params.value || "—",
     },
   ];
