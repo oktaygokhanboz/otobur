@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
 
-// Config the specific environment if it exist
-const envFile = process.env.ENV_FILE ? `.env.${proces.env.ENV_FILE}` : ".env";
-dotenv.config({ path: envFile });
+dotenv.config();
+// config specific env file if it exist and override the default env file
+dotenv.config({ path: `.env.${process.env.NODE_ENV}`, override: true });
 
 // Throw error if the environment is null, undefined or empty string
 function required(envName) {
