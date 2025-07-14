@@ -10,6 +10,17 @@ const accessionController = {
       next(err);
     }
   },
+
+  addNewRecord: async (req, res, next) => {
+    try {
+      const data = req.body;
+      await accessionModel.addNew(data);
+      res.status(200).json({ success: true, data });
+    } catch (err) {
+      console.log("Error adding new record to accession table");
+      next(err);
+    }
+  },
 };
 
 export default accessionController;
