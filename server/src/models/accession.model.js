@@ -78,6 +78,11 @@ const accessionModel = {
       ]
     );
   },
+
+  // delete an accession record by id
+  deleteById: async (id) => {
+    await db.query(`DELETE FROM plant WHERE id = $1`, [id]);
+  },
 };
 
 export default accessionModel;

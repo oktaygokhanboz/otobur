@@ -1,5 +1,6 @@
 import accessionModel from "../models/accession.model.js";
 
+// fetch accession table data
 const accessionController = {
   getAccessionTable: async (req, res, next) => {
     try {
@@ -11,13 +12,25 @@ const accessionController = {
     }
   },
 
+  // add new record to accession table
   addNewRecord: async (req, res, next) => {
     try {
       const data = req.body;
       await accessionModel.addNew(data);
-      res.status(200).json({ success: true, data });
+      res.status(201).json({ success: true, data });
     } catch (err) {
       console.log("Error adding new record to accession table");
+      next(err);
+    }
+  },
+
+  // delete an accession record by id
+  deleteRecord: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      await accessionModel.deleteById(id);
+      res.status(200).json({ success: true });
+    } catch (err) {
       next(err);
     }
   },

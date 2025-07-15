@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.get("/", accessionController.getAccessionTable);
 router.post("/", accessionController.addNewRecord);
+router.delete("/:id", accessionController.deleteRecord);
 
 export default router;
