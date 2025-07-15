@@ -21,7 +21,7 @@ const accessionModel = {
 
       FROM plant
       LEFT JOIN collector ON collector_id = collector.id
-      LEFT JOIN collection_info ON collection_info_id = collection_info.id
+      LEFT JOIN collection_info ON plant.id = collection_info.plant_id
       
       ORDER BY accession_number ASC
     `);
