@@ -79,6 +79,14 @@ const accessionModel = {
     );
   },
 
+  // patch an accession record by id
+  patchById: async (id, data) => {
+    await db.query(`UPDATE plant SET ${data.column} = $2 WHERE id = $3`, [
+      data.value,
+      id,
+    ]);
+  },
+
   // delete an accession record by id
   deleteById: async (id) => {
     await db.query(`DELETE FROM plant WHERE id = $1`, [id]);

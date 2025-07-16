@@ -24,6 +24,19 @@ const accessionController = {
     }
   },
 
+  // patch an accession record by id
+  patchRecord: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const data = req.body;
+      await accessionModel.patchById(id, data);
+      res.status(200).json({ success: true });
+    } catch (err) {
+      console.log("Error pathcing accession record");
+      next(err);
+    }
+  },
+
   // delete an accession record by id
   deleteRecord: async (req, res, next) => {
     try {
