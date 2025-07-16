@@ -1,4 +1,5 @@
 import accessionModel from "../models/accession.model.js";
+import dbTables from "../models/shema.js";
 
 // fetch accession table data
 const accessionController = {
@@ -29,8 +30,15 @@ const accessionController = {
     try {
       const { id } = req.params;
       const data = req.body;
-      await accessionModel.patchById(id, data);
-      res.status(200).json({ success: true });
+      // check if data table and column names exist
+      if (dbTables[data.table]?.includes(data.column)) {
+        await accessionModel.patchById(id, data);
+        res.status(200).json({ success: true });
+      } else {
+        throw new Error(
+          "Error patching accession record: table name or column name is not correct"
+        );
+      }
     } catch (err) {
       console.log("Error pathcing accession record");
       next(err);
