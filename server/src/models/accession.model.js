@@ -81,7 +81,7 @@ const accessionModel = {
 
   // patch an accession record by id
   patchById: async (id, data) => {
-    await db.query(`UPDATE plant SET ${data.column} = $2 WHERE id = $3`, [
+    await db.query(`UPDATE plant SET ${data.column} = $1 WHERE id = $2`, [
       data.value,
       id,
     ]);

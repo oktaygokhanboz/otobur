@@ -1,0 +1,50 @@
+const dbTables = {
+  plant: [
+    "id",
+    "accession_number",
+    "name",
+    "material",
+    "origin",
+    "collector_id",
+  ],
+  collection_info: [
+    "id",
+    "collection_number",
+    "location",
+    "collection_date",
+    "latitude",
+    "longitude",
+    "plant_id",
+  ],
+  plant_condition: [
+    "id",
+    "plant_id",
+    "user_id",
+    "observation_date",
+    "garden_location",
+    "location_code",
+    "status",
+    "vegetation_status",
+    "observation",
+  ],
+  seed_bank: ["id", "plant_id", "quantity", "locker_code"],
+  herbarium: [
+    "id",
+    "herbarium_no",
+    "plant_id",
+    "collector_id",
+    "collection_info_id",
+    "is_photo",
+  ],
+  collector: ["id", "name", "code", "phone", "email"],
+  otobur_user: ["id", "name", "password", "user_role"],
+  user_permission: [
+    "user_id",
+    "table_name",
+    "can_read",
+    "can_edit",
+    "can_delete",
+  ],
+};
+
+export default dbTables;
