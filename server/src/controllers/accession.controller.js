@@ -1,14 +1,26 @@
 import accessionModel from "../models/accession.model.js";
 import dbTables from "../models/shema.js";
 
-// fetch accession table data
 const accessionController = {
-  getAccessionTable: async (req, res, next) => {
+  // fetch all accession records
+  getAll: async (req, res, next) => {
     try {
       const data = await accessionModel.getAll();
       res.status(200).json({ success: true, data });
     } catch (err) {
-      console.log("Error fetching all plants");
+      console.log("Error fetching all accession records");
+      next(err);
+    }
+  },
+
+  // fetch a record by id from accession table
+  getRecord: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const data = await accessionModel.getById(id);
+      res.status(200).json({ success: true, data });
+    } catch (err) {
+      console.log("Error fetching a record from accession table");
       next(err);
     }
   },

@@ -28,6 +28,36 @@ const accessionModel = {
     return res.rows;
   },
 
+  getById: async (id) => {
+    const res = await db.query(
+      `
+      SELECT
+
+      plant.id,
+      accession_number,
+      plant.name AS plant_name,
+      material,
+      origin,
+      location,
+      latitude,
+      longitude,
+      collection_date,
+      collector.name AS collector_name,
+      code AS collector_code,
+      collection_number
+
+      FROM plant
+      LEFT JOIN collector ON collector_id = collector.id
+      LEFT JOIN collection_info ON plant.id = collection_info.plant_id
+      WHERE plant.id = $1
+      
+      ORDER BY accession_number ASC
+      `,
+      [id]
+    );
+    return res.rows;
+  },
+
   // add new record to accession table
   addNew: async (data) => {
     // add a plant record and return its id
