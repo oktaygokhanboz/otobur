@@ -109,11 +109,11 @@ const accessionModel = {
     );
   },
 
-  // patch an accession record by id
-  patchById: async (id, data) => {
+  // patch an accession record
+  patchById: async (data) => {
     await db.query(
       `UPDATE ${data.table} SET ${data.column} = $1 WHERE id = $2`,
-      [data.value, id]
+      [data.value, data.id]
     );
   },
 

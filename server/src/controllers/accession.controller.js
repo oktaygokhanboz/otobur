@@ -37,14 +37,13 @@ const accessionController = {
     }
   },
 
-  // patch an accession record by id
+  // patch an accession record
   patchRecord: async (req, res, next) => {
     try {
-      const { id } = req.params;
       const data = req.body;
       // check if data table and column names exist
       if (dbTables[data.table]?.includes(data.column)) {
-        await accessionModel.patchById(id, data);
+        await accessionModel.patchById(data);
         res.status(200).json({ success: true });
       } else {
         throw new Error(
