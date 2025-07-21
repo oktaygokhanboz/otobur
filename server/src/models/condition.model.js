@@ -5,22 +5,19 @@ const conditionModel = {
   getAll: async () => {
     const res = await db.query(`
     SELECT
-    
-    plant_condition.id,
-    accession_number,
-    plant.name AS plant_name,
-    observation_date,
-    otobur_user.name AS observer_name,
-    garden_location,
-    location_code,
-    status,
-    vegetation_status,
-    observation
-
+      plant_condition.id,
+      accession_number,
+      plant.name AS plant_name,
+      observation_date,
+      otobur_user.name AS observer_name,
+      garden_location,
+      location_code,
+      status,
+      vegetation_status,
+      observation
     FROM plant_condition
     JOIN plant ON plant_condition.plant_id = plant.id
     LEFT JOIN otobur_user ON plant_condition.user_id = otobur_user.id
-
     ORDER BY accession_number ASC
     `);
 
@@ -32,29 +29,26 @@ const conditionModel = {
     const res = await db.query(
       `
     SELECT
-    
-    plant_condition.id,
-    accession_number,
-    plant.name AS plant_name,
-    observation_date,
-    otobur_user.name AS observer_name,
-    garden_location,
-    location_code,
-    status,
-    vegetation_status,
-    observation
-
+      plant_condition.id,
+      accession_number,
+      plant.name AS plant_name,
+      observation_date,
+      otobur_user.name AS observer_name,
+      garden_location,
+      location_code,
+      status,
+      vegetation_status,
+      observation
     FROM plant_condition
     JOIN plant ON plant_condition.plant_id = plant.id
     LEFT JOIN otobur_user ON plant_condition.user_id = otobur_user.id
     WHERE plant_condition.id = $1
-
     ORDER BY accession_number ASC
     `,
       [id]
     );
 
-    return res.rows;
+    return res.rows[0];
   },
 
   // add new record
@@ -62,14 +56,14 @@ const conditionModel = {
     await db.query(
       `
       INSERT INTO plant_condition (
-      plant_id, 
-      user_id, 
-      observation_date, 
-      garden_location, 
-      location_code, 
-      status, 
-      vegetation_status, 
-      observation
+        plant_id, 
+        user_id, 
+        observation_date, 
+        garden_location, 
+        location_code, 
+        status, 
+        vegetation_status, 
+        observation
       )
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     `,

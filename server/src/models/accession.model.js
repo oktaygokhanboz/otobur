@@ -5,24 +5,21 @@ const accessionModel = {
   getAll: async () => {
     const res = await db.query(`
       SELECT
-
-      plant.id,
-      accession_number,
-      plant.name AS plant_name,
-      material,
-      origin,
-      location,
-      latitude,
-      longitude,
-      collection_date,
-      collector.name AS collector_name,
-      code AS collector_code,
-      collection_number
-
+        plant.id,
+        accession_number,
+        plant.name AS plant_name,
+        material,
+        origin,
+        location,
+        latitude,
+        longitude,
+        collection_date,
+        collector.name AS collector_name,
+        code AS collector_code,
+        collection_number
       FROM plant
       LEFT JOIN collector ON collector_id = collector.id
       LEFT JOIN collection_info ON plant.id = collection_info.plant_id
-      
       ORDER BY accession_number ASC
     `);
     return res.rows;
@@ -32,30 +29,27 @@ const accessionModel = {
     const res = await db.query(
       `
       SELECT
-
-      plant.id,
-      accession_number,
-      plant.name AS plant_name,
-      material,
-      origin,
-      location,
-      latitude,
-      longitude,
-      collection_date,
-      collector.name AS collector_name,
-      code AS collector_code,
-      collection_number
-
+        plant.id,
+        accession_number,
+        plant.name AS plant_name,
+        material,
+        origin,
+        location,
+        latitude,
+        longitude,
+        collection_date,
+        collector.name AS collector_name,
+        code AS collector_code,
+        collection_number
       FROM plant
       LEFT JOIN collector ON collector_id = collector.id
       LEFT JOIN collection_info ON plant.id = collection_info.plant_id
       WHERE plant.id = $1
-      
       ORDER BY accession_number ASC
       `,
       [id]
     );
-    return res.rows;
+    return res.rows[0];
   },
 
   // add new record to accession table

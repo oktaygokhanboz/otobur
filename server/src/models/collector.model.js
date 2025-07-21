@@ -13,7 +13,7 @@ const collectorModel = {
       `SELECT * FROM collector WHERE id=$1 ORDER BY name ASC`,
       [id]
     );
-    return res.rows;
+    return res.rows[0];
   },
 
   // add a collector record
