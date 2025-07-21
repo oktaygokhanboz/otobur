@@ -8,7 +8,7 @@ const conditionController = {
       const data = await conditionModel.getAll();
       res.status(200).json({ success: true, data });
     } catch (err) {
-      console.log("Error fetching all condition records");
+      console.error("Error fetching all condition records");
       next(err);
     }
   },
@@ -20,7 +20,7 @@ const conditionController = {
       const data = await conditionModel.getById(id);
       res.status(200).json({ success: true, data });
     } catch (err) {
-      console.log("Error fetching a condition record");
+      console.error("Error fetching a condition record");
       next(err);
     }
   },
@@ -32,7 +32,7 @@ const conditionController = {
       await conditionModel.addNew(data);
       res.status(201).json({ success: true });
     } catch (err) {
-      console.log("Error adding new condition record");
+      console.error("Error adding new condition record");
       next(err);
     }
   },
@@ -51,7 +51,7 @@ const conditionController = {
         );
       }
     } catch (err) {
-      console.log("Error pathcing condition record");
+      console.error("Error pathcing condition record");
       next(err);
     }
   },
@@ -63,7 +63,7 @@ const conditionController = {
       await conditionModel.deleteById(id);
       res.status(200).json({ success: true });
     } catch (err) {
-      console.log("Error deleting condition record");
+      console.error("Error deleting condition record");
       next(err);
     }
   },

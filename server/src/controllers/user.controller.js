@@ -6,7 +6,7 @@ const userController = {
       const data = await userModel.getAll();
       res.status(200).json({ success: true, data });
     } catch (err) {
-      console.log("Error fetching all users");
+      console.error("Error fetching all user records");
       next(err);
     }
   },

@@ -8,7 +8,7 @@ const collectorController = {
       const data = await collectorModel.getAll();
       res.status(200).json({ success: true, data });
     } catch (err) {
-      console.log("Error fetching all collectors");
+      console.error("Error fetching all collector records");
       next(err);
     }
   },
@@ -20,7 +20,7 @@ const collectorController = {
       const data = await collectorModel.getById(id);
       res.status(200).json({ success: true, data });
     } catch (err) {
-      console.log("Error fetching collector record");
+      console.error("Error fetching a collector record");
       next(err);
     }
   },
@@ -32,7 +32,7 @@ const collectorController = {
       await collectorModel.addNew(data);
       res.status(201).json({ success: true });
     } catch (err) {
-      console.log("Error adding new collector record");
+      console.error("Error adding new collector record");
       next(err);
     }
   },
@@ -45,12 +45,10 @@ const collectorController = {
         await collectorModel.patchById(data);
         res.status(200).json({ success: true });
       } else {
-        throw new Error(
-          "Error patching collector record: column name is incorrect"
-        );
+        throw new Error("Invalid collector column name");
       }
     } catch (err) {
-      console.log("Error patching a collector record");
+      console.error("Error patching collector record");
       next(err);
     }
   },
@@ -62,7 +60,8 @@ const collectorController = {
       await collectorModel.deleteById(id);
       res.status(200).json({ success: true });
     } catch (err) {
-      console.log("Error deleting a collector record");
+      console.error("Error deleting a collector record");
+      next(err);
     }
   },
 };

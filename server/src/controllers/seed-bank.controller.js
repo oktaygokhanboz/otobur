@@ -6,7 +6,7 @@ const seedBankController = {
       const data = await seedBankModel.getAll();
       res.status(200).json({ success: true, data });
     } catch (err) {
-      console.log("Error fetching all seed bank data");
+      console.error("Error fetching all seed bank records");
       next(err);
     }
   },

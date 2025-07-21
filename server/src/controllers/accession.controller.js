@@ -8,7 +8,7 @@ const accessionController = {
       const data = await accessionModel.getAll();
       res.status(200).json({ success: true, data });
     } catch (err) {
-      console.log("Error fetching all accession records");
+      console.error("Error fetching all accession records");
       next(err);
     }
   },
@@ -20,7 +20,7 @@ const accessionController = {
       const data = await accessionModel.getById(id);
       res.status(200).json({ success: true, data });
     } catch (err) {
-      console.log("Error fetching a record from accession table");
+      console.error("Error fetching an accession record");
       next(err);
     }
   },
@@ -32,7 +32,7 @@ const accessionController = {
       await accessionModel.addNew(data);
       res.status(201).json({ success: true, data });
     } catch (err) {
-      console.log("Error adding new record to accession table");
+      console.error("Error adding new accession record");
       next(err);
     }
   },
@@ -51,7 +51,7 @@ const accessionController = {
         );
       }
     } catch (err) {
-      console.log("Error pathcing accession record");
+      console.error("Error patching an accession record");
       next(err);
     }
   },
@@ -63,6 +63,7 @@ const accessionController = {
       await accessionModel.deleteById(id);
       res.status(200).json({ success: true });
     } catch (err) {
+      console.error("Error deleting an accession record");
       next(err);
     }
   },

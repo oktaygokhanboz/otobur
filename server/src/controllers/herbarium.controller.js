@@ -8,7 +8,7 @@ const herbariumController = {
       const data = await herbariumModel.getAll();
       res.status(200).json({ success: true, data });
     } catch (err) {
-      console.log("Error fetching all herbarium data");
+      console.error;
       next(err);
     }
   },
@@ -20,7 +20,7 @@ const herbariumController = {
       const data = await herbariumModel.getById(id);
       res.status(200).json({ success: true, data });
     } catch (err) {
-      console.log("Error fetching a herbarium record");
+      console.error("Error fetching a herbarium record");
       next(err);
     }
   },
@@ -32,7 +32,7 @@ const herbariumController = {
       await herbariumModel.addNew(data);
       res.status(201).json({ success: true });
     } catch (err) {
-      console.log("Error adding new herbarium record");
+      console.error("Error adding new herbarium record");
       next(err);
     }
   },
@@ -45,9 +45,11 @@ const herbariumController = {
       if (dbTable.herbarium.includes(data.column)) {
         await herbariumModel.patchRecord(data);
         res.status(200).json({ success: true });
+      } else {
+        throw new Error("Invalid herbarium column name");
       }
     } catch (err) {
-      console.log("Error patching herbarium record");
+      console.error("Error patching herbarium record");
       next(err);
     }
   },
@@ -59,7 +61,7 @@ const herbariumController = {
       await herbariumModel.deleteById(id);
       res.status(200).json({ success: true });
     } catch (err) {
-      console.log("Error deleting herbarium record");
+      console.error("Error deleting herbarium record");
       next(err);
     }
   },
